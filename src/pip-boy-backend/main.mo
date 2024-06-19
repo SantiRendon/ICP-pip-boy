@@ -30,11 +30,15 @@ actor {
 
   // Create
   public shared func addGame(idGame : IDGame, ps3Game : PS3Game) : async () {
-    let game = ps3Game;
-
-    gamesList.put(idGame, game);
-    Debug.print("Created game with id:" # idGame);
-    return ();
+    let game : ?PS3Game = gamesList.get(idGame);
+    if (game != null) {
+      Debug.print("Game with id:" # idGame # " already exists");
+      return ();
+    } else {
+      gamesList.put(idGame, ps3Game);
+      Debug.print("Created game with id:" # idGame);
+      return ();
+    };
   };
 
   // Read
@@ -52,9 +56,18 @@ actor {
   };
 
   // Update
+  public func updateGameById(idGame : IDGame, ps3Game : PS3Game) : async ?PS3Game {
+    let game : ?PS3Game = gamesList.get(idGame);
+    if (game != null) {
+      gamesList.put(idGame, ps3Game);
+      return game;
+    } else {
+      return null;
+    };
+  };
 
   // Delete
-  public query func removeGameById(idGame : IDGame) : async ?PS3Game {
+  public func removeGameById(idGame : IDGame) : async ?PS3Game {
     let game : ?PS3Game = gamesList.remove(idGame);
 
     return game;
