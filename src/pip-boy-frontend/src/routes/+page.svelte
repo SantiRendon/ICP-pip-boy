@@ -1,5 +1,6 @@
 <script>
   import "../index.scss";
+  import {onMount} from "svelte"
   import { backend } from "$lib/canisters";
 
   let greeting = "";
@@ -11,11 +12,30 @@
   //   });
   //   return false;
   // }
+
+onMount(() => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const main = document.querySelector('main');
+
+                if (targetElement) {
+                        main.scrollTo({
+                                top: targetElement.offsetTop - main.offsetTop,
+                                behavior: 'smooth'
+                        });
+                }
+        });
+    });
+});
+  
 </script>
 
 <div class="retro-container scanline-effect old-crt-monitor">
-  <header>
-      <h1>jajaja</h1>
+  <header class="side-bar">
+      <!-- <h1>jajaja</h1> -->
       <!-- svelte-ignore a11y-no-redundant-roles -->
       <nav role="navigation">
           <ul>
@@ -30,7 +50,7 @@
   <main>
       <section id="screen-1">
           <article>
-              <header>
+              <header class="title-screen">
                   <h2>SCREEN 1</h2>
               </header>
               <div class="content">
@@ -43,7 +63,7 @@
       </section>
       <section id="screen-2">
           <article>
-              <header>
+              <header class="title-screen">
                   <h2>SCREEN 2</h2>
               </header>
               <div class="content">
@@ -56,6 +76,6 @@
       </section>
   </main>
   <footer>
-      <p></p>
+      <p>🕳</p>
   </footer>
 </div>

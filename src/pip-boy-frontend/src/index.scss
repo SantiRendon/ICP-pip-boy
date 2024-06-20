@@ -42,7 +42,7 @@ div.retro-container {
     width: 90vw;
     height: 90vh;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 4fr;
     overflow: hidden;
     padding: 0.5rem;
     border: 2px solid var(--primary-color);
@@ -52,12 +52,21 @@ div.retro-container {
     text-shadow: 0 0 0.5rem;
 }
 
-header,
 footer {
     display: flex;
     gap: 2rem;
     align-items: center;
 }
+
+.title-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.side-bar {}
 
 main {
     overflow: hidden;
@@ -96,11 +105,15 @@ alert {
 }
 
 @keyframes blink-bg {
-    0%, 60% {
+
+    0%,
+    60% {
         text-shadow: 0 0 10.5rem;
         color: var(--primary-color);
     }
-    70%, 100% {
+
+    70%,
+    100% {
         text-shadow: 0 0 20.5rem;
         color: var(--tertiary-color);
     }
