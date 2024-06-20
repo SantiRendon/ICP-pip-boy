@@ -13,7 +13,7 @@
   // }
 </script>
 
-<div class="retro-container scanline-effect">
+<div class="retro-container scanline-effect old-crt-monitor">
   <header>
       <h1>jajaja</h1>
       <!-- svelte-ignore a11y-no-redundant-roles -->
@@ -26,6 +26,7 @@
           </ul>
       </nav>
   </header>
+  
   <main>
       <section id="screen-1">
           <article>
